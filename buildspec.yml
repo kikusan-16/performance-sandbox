@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+
+  build:
+    commands:
+      - echo start build.
+
+      # Spring Bootプロジェクトのビルド（jarの作成）
+      - ./gradlew build
+      - ls -l build
+
+      - echo finish build.
+
+  post_build:
+    commands:
+      - echo start post build.
+
+      # S3にアップロードするファイルを所定のディレクトリにコピー
+      - mkdir artifacts
+      - cp build/libs/performance-sandbox-0.0.1-SNAPSHOT.jar artifacts
+
+      - echo finish post build.
+
+artifacts:
+  # S3にアップロードするファイルを指定
+  files:
+    - performance-sandbox-0.0.1-SNAPSHOT.jar
+  # ベースディレクトリ
+  base-directory: artifacts
