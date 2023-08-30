@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${APP_DB_ENDPOINT}
+    username: ${APP_DB_USERNAME}
+    password: ${APP_DB_PASSWORD}
+    driverClassName: ${APP_DB_DRIVER}
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
