@@ -22,6 +22,7 @@ phases:
       # S3にアップロードするファイルを所定のディレクトリにコピー
       - mkdir artifacts
       - cp build/libs/performance-sandbox-0.0.1-SNAPSHOT.jar artifacts
+      - cp appspec.yml artifacts
 
       - echo finish post build.
 
@@ -29,5 +30,6 @@ artifacts:
   # S3にアップロードするファイルを指定
   files:
     - performance-sandbox-0.0.1-SNAPSHOT.jar
+    - appspec.yml
   # ベースディレクトリ
   base-directory: artifacts
